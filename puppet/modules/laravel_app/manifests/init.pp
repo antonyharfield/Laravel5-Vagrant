@@ -41,4 +41,9 @@ class laravel_app
 	file { '/var/www/app/storage':
 		mode => 0777
 	}
+
+	exec { 'setup default env':
+	    command => "/bin/sed -i 's:^DB_DATABASE=.*$:DB_DATABASE=database:' /var/www/.env; /bin/sed -i 's:^DB_USERNAME=.*$:DB_USERNAME=root:' /var/www/.env; /bin/sed -i 's:^DB_PASSWORD=.*$:DB_PASSWORD=:' /var/www/.env",
+	    require => [Exec['create laravel project']]
+	}
 }
