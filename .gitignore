@@ -40,3 +40,5 @@ dwsync.xml
 # Laravel
 /www/storage/*
 
+/www/html
+

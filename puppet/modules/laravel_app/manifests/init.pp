@@ -46,4 +46,9 @@ class laravel_app
 	    command => "/bin/sed -i 's:^DB_DATABASE=.*$:DB_DATABASE=database:' /var/www/.env; /bin/sed -i 's:^DB_USERNAME=.*$:DB_USERNAME=root:' /var/www/.env; /bin/sed -i 's:^DB_PASSWORD=.*$:DB_PASSWORD=:' /var/www/.env",
 	    require => [Exec['create laravel project']]
 	}
+	
+	exec { 'add branding on homepage':
+	    command => "/bin/sed -i 's|Laravel 5</div>|Laravel 5<br><span style=\"font-size:32px\">by Mobile Computing Lab</span></div>|' /var/www/resources/views/welcome.blade.php",
+        require => [Exec['create laravel project']]
+	}
 }
