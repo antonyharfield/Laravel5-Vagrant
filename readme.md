@@ -38,6 +38,8 @@ Some basic information on interacting with the vagrant box
 * Password: (blank)
 * DB Name: database
 
+*Note: If you are not going to use PostgreSQL then it is a good idea to comment out the postgres
+references in your `puppet/manifests/phpbase.pp`.
 
 ### PHPmyAdmin
 
@@ -51,6 +53,15 @@ Vagrant is [very well documented](http://vagrantup.com/v1/docs/index.html) but h
 * `vagrant up` starts the virtual machine and provisions it
 * `vagrant halt` attempts a graceful shutdown of the machine and will need to be brought back with `vagrant up`
 * `vagrant ssh` gives you shell access to the virtual machine
+
+
+### Sass in Laravel 5
+
+Laravel 5 comes with a default app.scss file ready for editing. Puppet provisions all the necessary
+tools for auto-compiling your scss file to css. To start the auto-compiling, you need to run gulp:
+
+* First, `vagrant ssh` to get into the VM, then `cd /var/www`.
+* Run `gulp watch` to watch your scss file and get it auto compiled.
 
 
 ## Production deployment

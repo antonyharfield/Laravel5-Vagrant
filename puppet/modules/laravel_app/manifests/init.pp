@@ -37,6 +37,12 @@ class laravel_app
         creates => "/var/www/vendor/autoload.php",
         timeout => 900,
 	}
+	
+	exec { 'install npm packages':
+	    command => "/bin/sh -c 'cd /var/www && npm install'",
+	    require => [Package['nodejs'], Exec['install gulp'], Exec['create laravel project']],
+	    timeout => 900,
+	}
 
 	file { '/var/www/app/storage':
 		mode => 0777
