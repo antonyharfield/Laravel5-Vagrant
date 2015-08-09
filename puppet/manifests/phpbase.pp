@@ -25,7 +25,7 @@ include beanstalkd
 include redis
 include memcached
 include composer
-
+include npm
 include laravel_app
 
 class { 'postgresql::server':

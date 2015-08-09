@@ -9,7 +9,8 @@ class npm
 	}
 
 	exec { 'add npm repo':
-		command => 'curl --silent --location https://deb.nodesource.com/setup_0.12 | sudo bash -'
+		command => 'curl --silent --location https://deb.nodesource.com/setup_0.12 | sudo bash -',
+		require => Package['curl']
 	}
 
     exec { 'install gulp':
