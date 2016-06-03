@@ -5,10 +5,10 @@ Vagrant.configure("2") do |config|
     config.vm.define :laravel5 do |lv5_config|
         lv5_config.vm.box = "ubuntu/trusty64"
         lv5_config.ssh.forward_agent = true
-        
+
         # This will give the machine a static IP uncomment to enable
         # lv5_config.vm.network :private_network, ip: "192.168.56.101"
-        
+
         lv5_config.vm.network :forwarded_port, guest: 80, host: 8888, auto_correct: true
         lv5_config.vm.network :forwarded_port, guest: 3306, host: 8889, auto_correct: true
         lv5_config.vm.network :forwarded_port, guest: 5432, host: 5433, auto_correct: true
@@ -17,7 +17,7 @@ Vagrant.configure("2") do |config|
 
         lv5_config.vm.provider :virtualbox do |v|
             v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-            v.customize ["modifyvm", :id, "--memory", "512"]
+            v.customize ["modifyvm", :id, "--memory", "1024"]
         end
 
         # Install puppet if required (for AWS box)
@@ -45,7 +45,7 @@ Vagrant.configure("2") do |config|
             override.ssh.username = "ubuntu"
             aws.tags = { 'Name' => 'My new server' }
         end
-        
+
         # GCE specific config
         lv5_config.vm.provider :google do |google, override|
             override.vm.box = "gce"
@@ -67,7 +67,7 @@ Vagrant.configure("2") do |config|
                 zone1f.tags = ['web', 'app1']
             end
         end
-        
+
         # digitalocean config
         lv5_config.vm.provider :digital_ocean do |digital_ocean, override|
             override.ssh.private_key_path = '~/.ssh/id_rsa'
