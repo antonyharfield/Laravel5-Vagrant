@@ -3,8 +3,7 @@
 
 Vagrant.configure("2") do |config|
     config.vm.define :laravel5 do |lv5_config|
-        lv5_config.vm.box = "precise32"
-        lv5_config.vm.box_url = "http://files.vagrantup.com/precise32.box"
+        lv5_config.vm.box = "ubuntu/trusty64"
         lv5_config.ssh.forward_agent = true
         
         # This will give the machine a static IP uncomment to enable
