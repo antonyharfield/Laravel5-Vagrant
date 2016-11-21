@@ -11,19 +11,18 @@ exec
 {
     'apt-get update':
         command => '/usr/bin/apt-get update',
-        require => Exec['add php55 apt-repo']
+        timeout => 900,
 }
 
 include bootstrap
-include other #curl and sqlite
-include php55 #specific setup steps for 5.5
+include other
 include php
 include apache
 include mysql
 include phpmyadmin
-include beanstalkd
-include redis
-include memcached
+#include beanstalkd
+#include redis
+#include memcached
 include composer
 include npm
 include laravel_app

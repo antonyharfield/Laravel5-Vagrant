@@ -4,7 +4,7 @@ class apache
     { 
         "apache2":
             ensure  => present,
-            require => [Exec['apt-get update'], Package['php5'], Package['php5-dev'], Package['php5-cli']]
+            require => [Exec['apt-get update'], Package['php5.6'], Package['php5.6-dev'], Package['php5.6-cli']]
     }
     
     service 
