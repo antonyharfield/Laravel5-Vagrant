@@ -54,7 +54,7 @@ class php
 
     file
     {
-        "/etc/php/5.6/cli/php.ini":
+        "/etc/php/5.6/apache2/php.ini":
             ensure  => present,
             owner   => root, group => root,
             notify  => Service['apache2'],
@@ -65,7 +65,7 @@ class php
 
     file
     {
-        "/etc/php5/cli/php.ini":
+        "/etc/php/5.6/cli/php.ini":
             ensure  => present,
             owner   => root, group => root,
             notify  => Service['apache2'],
