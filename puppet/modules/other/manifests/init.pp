@@ -12,4 +12,10 @@ class other
             ensure  => present,
             require => Exec['apt-get update']
     }
+    package
+        {
+            "zip":
+                ensure  => present,
+                require => Exec['apt-get update']
+        }
 }
