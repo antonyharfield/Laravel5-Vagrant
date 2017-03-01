@@ -16,21 +16,21 @@ class php
 	}
 
     $packages = [
-            "php5.6",
-            "php5.6-cli",
-            "php5.6-mysql",
-            "php5.6-dev",
-            "php5.6-apc",
-            "php5.6-mbstring",
-            "php5.6-mcrypt",
-            "php5.6-gd",
-            "php5.6-curl",
-            "libapache2-mod-php5.6",
-            "php5.6-memcache",
-            "php5.6-memcached",
-            "php5.6-xml",
-            "php-gettext"
-        ]
+        "php5.6",
+        "php5.6-cli",
+        "php5.6-mysql",
+        "php5.6-dev",
+        "php5.6-apc",
+        "php5.6-mbstring",
+        "php5.6-mcrypt",
+        "php5.6-gd",
+        "php5.6-curl",
+        "libapache2-mod-php5.6",
+        "php5.6-memcache",
+        "php5.6-memcached",
+        "php5.6-xml",
+        "php-gettext"
+    ]
 
     package
     {
@@ -39,19 +39,23 @@ class php
             require => [Exec['php apt-get update'], Package['python-software-properties']]
     }
 
-   	# From https://launchpad.net/~ondrej/+archive/ubuntu/php
-   	exec
-   	{
-   		'add php apt-repo':
-   			command => '/usr/bin/add-apt-repository ppa:ondrej/php -y',
-   			require => [Package['python-software-properties']],
-   	}
-       ->
-   	exec { "php apt-get update":
-   		command => 'apt-get update',
-   		timeout => 900,
-   	}
 
+	# From https://launchpad.net/~ondrej/+archive/ubuntu/php
+	exec
+	{
+		'add php apt-repo':
+			command => '/usr/bin/add-apt-repository ppa:ondrej/php -y',
+			require => [Package['python-software-properties']],
+	}
+    ->
+	exec { "php apt-get update":
+		command => 'apt-get update',
+		timeout => 900,
+	}
+	->
+    exec { 'switch to php5.6':
+       	command => 'update-alternatives --set php /usr/bin/php5.6'
+    }
 
     file
     {
