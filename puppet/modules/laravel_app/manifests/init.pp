@@ -16,7 +16,7 @@ class laravel_app
 
 	exec { 'create laravel project':
 		command => "/bin/bash -c 'cd /var/www/ && shopt -s dotglob nullglob; composer create-project laravel/laravel . --prefer-dist'",
-		require => [Exec['global composer'], Package['php5'], Package['git-core'], Exec['clean www directory']],
+		require => [Exec['global composer'], Package['php5.6'], Package['git-core'], Exec['clean www directory']],
 		creates => "/var/www/composer.json",
 		timeout => 1800,
 		logoutput => true
