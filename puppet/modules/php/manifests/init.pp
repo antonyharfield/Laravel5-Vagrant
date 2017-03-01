@@ -16,20 +16,21 @@ class php
 	}
 
     $packages = [
-        "php5.6",
-        "php5.6-cli",
-        "php5.6-mysql",
-        "php5.6-dev",
-        "php5.6-apc",
-        "php5.6-mcrypt",
-        "php5.6-gd",
-        "php5.6-curl",
-        "libapache2-mod-php5.6",
-        "php5.6-memcache",
-        "php5.6-memcached"
-        #"php5.6-pgsql",
-        #"php5.6-sqlite"
-    ]
+            "php5.6",
+            "php5.6-cli",
+            "php5.6-mysql",
+            "php5.6-dev",
+            "php5.6-apc",
+            "php5.6-mbstring",
+            "php5.6-mcrypt",
+            "php5.6-gd",
+            "php5.6-curl",
+            "libapache2-mod-php5.6",
+            "php5.6-memcache",
+            "php5.6-memcached",
+            "php5.6-xml",
+            "php-gettext"
+        ]
 
     package
     {
